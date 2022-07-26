@@ -1,25 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import EntryField from './components/EntryField';
+import { useState } from 'react';
+import OutputField from './components/OutputField';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [color, setColor] = useState({ color: '#00665E' });
+	const hexColor = newColor => {
+		setColor({ color: newColor });
+	};
+
+	return (
+		<div className="App" style={{
+			backgroundColor: color.color,
+		}}>
+			<EntryField hexColor={hexColor} colorDefault={color.color} />
+			<OutputField hexColor={color.color} />
+		</div>
+	);
 }
 
 export default App;
